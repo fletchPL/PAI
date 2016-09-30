@@ -1,4 +1,8 @@
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
+import java.io.LineNumberReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -7,7 +11,7 @@ import java.util.Scanner;
 public class MainClass {
 	
 	private static String path = "C:\\Users\\Maciej\\Desktop\\PAI\\Zadanie1\\file";
-	
+	public static String nextLine = null;
 	public static void main(String[] args) {
 		String [] fileNameList;
 		String fileNameAsString;
@@ -52,15 +56,30 @@ public class MainClass {
 		for (String file : fileNameList) {
 			
 			try{
-				Path path = Paths.get(file);
-				long lines = Files.lines(path).count();
-				System.out.println("Lines in the file " + file + " equals " + lines);
+				countTheNumberOfLine(file);
 				
 			}catch(Exception e)
 			{
 				e.printStackTrace();
 			}
 		}
+		
+	}
+
+	private static void countTheNumberOfLine(String file) throws Exception {
+		
+			LineNumberReader lineCounter = new LineNumberReader(new InputStreamReader(new FileInputStream(path + "\\"+file)));
+			try{
+				while((nextLine = lineCounter.readLine())!= null)
+				{
+					if(nextLine.equals(null))
+					break;
+				}
+				System.out.println("Total number of the line in file " + file + "equals " + lineCounter);
+			}catch(Exception e)
+			{
+				e.printStackTrace();
+			}
 		
 	}
 

@@ -5,6 +5,7 @@ public class MainClass {
 	public static void main(String[] args) {
 		String [] fileNameList;
 		String fileNameAsString;
+		
 		System.out.println("Type the name of file with '.txt' separate ' ' ");
 		Scanner inputFileName = new Scanner(System.in);
 		fileNameAsString = inputFileName.nextLine();
@@ -15,6 +16,14 @@ public class MainClass {
 			System.out.println(fileName);
 			
 		}
+		
+		System.out.println("Single Thread");
+		countTheNumberOfLineUsingOneThread(fileNameList);
+		
+	}
+
+	private static void countTheNumberOfLineUsingOneThread(String[] fileNameList) {
+		// TODO Auto-generated method stub
 		
 	}
 

@@ -10,8 +10,10 @@ public class MainClass {
 		fileNameAsString = inputFileName.nextLine();
 		fileNameList = fileNameAsString.split(" ");
 		
+		System.out.println(" ");
 		for (String fileName : fileNameList) {
 			System.out.println(fileName);
+			
 		}
 		
 	}

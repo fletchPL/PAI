@@ -8,6 +8,7 @@ public class MainClass {
 	
 	private static String path = "C:\\Users\\Maciej\\Desktop\\PAI\\Zadanie1\\file";
 	public static String nextLine = null;
+	public static long start, end, totalTime;
 	public static void main(String[] args) {
 		String [] fileNameList;
 		String fileNameAsString;
@@ -24,26 +25,33 @@ public class MainClass {
 			System.out.println(fileName);
 			
 		}
-		
+		start = System.currentTimeMillis();
 		System.out.println("Single Thread");
 		countTheNumberOfLineUsingOneThread(fileNameList);
-		
+		end = System.currentTimeMillis();
+		totalTime = end - start;
+		System.out.println("Time for counting line using ONE THREAD equals " + totalTime + " ms");
 	}
 
 	private static void displayAllFileInPathFolder() {
-		File folder = new File(path);
-		File[] listOfFile = folder.listFiles();
-		
-		for (File file : listOfFile) {
-			if(file.isFile())
-			{
-				System.out.println(file);
-			}else 
-			{
-				System.out.println(file + " is not a file ");
+		try
+		{
+			File folder = new File(path);
+			File[] listOfFile = folder.listFiles();
+			
+			for (File file : listOfFile) {
+				if(file.isFile())
+				{
+					System.out.println(file);
+				}else 
+				{
+					System.out.println(file + " is not a file ");
+				}
 			}
+		}catch(Exception e)
+		{
+			e.printStackTrace();
 		}
-		
 		
 	}
 

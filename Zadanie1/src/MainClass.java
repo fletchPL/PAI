@@ -1,7 +1,13 @@
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class MainClass {
-
+	
+	private static String path = ".file/";
+	
 	public static void main(String[] args) {
 		String [] fileNameList;
 		String fileNameAsString;
@@ -16,14 +22,43 @@ public class MainClass {
 			System.out.println(fileName);
 			
 		}
-		
+		displayAllFileInPathFolder();
 		System.out.println("Single Thread");
 		countTheNumberOfLineUsingOneThread(fileNameList);
 		
 	}
 
+	private static void displayAllFileInPathFolder() {
+		File folder = new File(path);
+		File[] listOfFile = folder.listFiles();
+		
+		for (File file : listOfFile) {
+			if(file.isFile())
+			{
+				System.out.println(file);
+			}else 
+			{
+				System.out.println(file + " is not a file ");
+			}
+		}
+		
+		
+	}
+
 	private static void countTheNumberOfLineUsingOneThread(String[] fileNameList) {
-		// TODO Auto-generated method stub
+		
+		for (String file : fileNameList) {
+			
+			try{
+				Path path = Paths.get(file);
+				long lines = Files.lines(path).count();
+				System.out.println("Lines in the file " + file + " equals " + lines);
+				
+			}catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
 		
 	}
 

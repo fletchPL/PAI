@@ -6,11 +6,13 @@ import java.util.Scanner;
 
 public class MainClass {
 	
-	private static String path = ".file/";
+	private static String path = "C:\\Users\\Maciej\\Desktop\\PAI\\Zadanie1\\file";
 	
 	public static void main(String[] args) {
 		String [] fileNameList;
 		String fileNameAsString;
+		
+		displayAllFileInPathFolder();
 		
 		System.out.println("Type the name of file with '.txt' separate ' ' ");
 		Scanner inputFileName = new Scanner(System.in);
@@ -22,7 +24,7 @@ public class MainClass {
 			System.out.println(fileName);
 			
 		}
-		displayAllFileInPathFolder();
+		
 		System.out.println("Single Thread");
 		countTheNumberOfLineUsingOneThread(fileNameList);
 		

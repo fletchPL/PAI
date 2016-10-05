@@ -2,7 +2,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import javax.swing.plaf.synth.Region;
 
 public class MainClass {
 	
@@ -25,12 +28,27 @@ public class MainClass {
 			System.out.println(fileName);
 			
 		}
+		
 		start = System.currentTimeMillis();
 		System.out.println("Single Thread");
 		countTheNumberOfLineUsingOneThread(fileNameList);
 		end = System.currentTimeMillis();
 		totalTime = end - start;
 		System.out.println("Time for counting line using ONE THREAD equals " + totalTime + " ms");
+		
+		
+		countTheNumberOfLineUsingMultiThreadSeq(fileNameList);
+		
+		
+	}
+
+	private static void countTheNumberOfLineUsingMultiThreadSeq(String[] fileNameList) {
+		
+		ArrayList<ThreadClass> threadList = new ArrayList<>();
+		for (String file : fileNameList) {
+			ThreadClass thread = new ThreadClass("thread", file);
+		}
+		
 	}
 
 	private static void displayAllFileInPathFolder() {

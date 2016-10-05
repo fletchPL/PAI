@@ -36,17 +36,29 @@ public class MainClass {
 		totalTime = end - start;
 		System.out.println("Time for counting line using ONE THREAD equals " + totalTime + " ms");
 		
+		System.out.println("\n\n\n");
 		
+		start = System.currentTimeMillis();
 		countTheNumberOfLineUsingMultiThreadSeq(fileNameList);
-		
-		
+		end = System.currentTimeMillis();
+		totalTime = end - start;
+		System.out.println("Time for counting line using MultiSeq THREAD equals " + totalTime + " ms");
 	}
 
 	private static void countTheNumberOfLineUsingMultiThreadSeq(String[] fileNameList) {
 		
 		ArrayList<ThreadClass> threadList = new ArrayList<>();
+		String threadName;
+		
 		for (String file : fileNameList) {
-			ThreadClass thread = new ThreadClass("thread", file);
+			threadName = ("thread " + file);
+			ThreadClass thread = new ThreadClass(threadName, file);
+			threadList.add(thread);
+		}
+		for(ThreadClass thread : threadList)
+		{
+			thread.startSequency();
+			
 		}
 		
 	}
